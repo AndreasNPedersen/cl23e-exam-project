@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts-alpine
 EXPOSE 3000
 WORKDIR /usr/src/app
 COPY package*.json ./

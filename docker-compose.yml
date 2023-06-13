@@ -4,25 +4,23 @@ services:
   db:
     image: mariadb:latest
     environment:
-      MARIADB_USER: 'example-user-kenneth'
-      MARIADB_PASSWORD: 'my_cool_secret'
       MARIADB_ROOT_PASSWORD: 'my-secret-pw'
       MARIADB_DATABASE: 'sample'
     volumes:
       - db:/var/lib/mysql
 
   nodeFrontend:
-    image: frontend
+    image: frontend:latest
     ports:
       - 80:80
     environment:
       DB_HOST: db
       DB_PORT: 3306
     depends_on:
-      - db
+      - nodeBackend
 
   nodeBackend:
-    image: backend
+    image: backend:latest
     ports:
       - 3000:3000
     environment:
